@@ -62,6 +62,14 @@ SOCIALACCOUNT_PROVIDERS = {
             'client_id': env('OAUTH_GOOGLE_CLIENT_ID'),
             'secret': env('OAUTH_GOOGLE_SECRET'),
         },
+        'SCOPE': [
+            'profile',
+            'email'
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+            'prompt':'consent'
+        },
     },
 }
 
