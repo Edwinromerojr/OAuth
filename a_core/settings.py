@@ -180,3 +180,4 @@ SOCIALACCOUNT_EMAIL_AUTHENTICATION_AUTO_CONNECT = True
 SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
 
 ACCOUNT_ADAPTER = 'a_users.adapters.CustomAccountAdapter'
+SOCIALACCOUNT_ADAPTER = 'a_users.adapters.SocialAccountAdapter'
