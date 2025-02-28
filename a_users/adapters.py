@@ -3,6 +3,9 @@ from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 from allauth.account.models import EmailAddress
 from django.shortcuts import resolve_url
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 class CustomAccountAdapter(DefaultAccountAdapter):
     def get_signup_redirect_url(self, request):
         return resolve_url("profile-onboarding")
@@ -14,6 +17,11 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
 
         if not email:
             return
+
+        if not sociallogin.is_existing:
+            existing_user = User.obhects.filter(email=email).first()
+            if existing_user:
+                sociallogin.connect(request, existing_user)
 
         if sociallogin.is_existing:
             user = sociallogin.user

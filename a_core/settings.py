@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.twitter',
 
     # My apps
     'a_home',
@@ -79,6 +80,12 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         'AUTH_PARAMS': {
             'prompt':'consent'
+        },
+    },
+    'twitter': {
+        'APP': {
+            'client_id': env('OAUTH_TWITTER_CLIENT_ID'),
+            'secret': env('OAUTH_TWITTER_SECRET'),
         },
     },
 }
